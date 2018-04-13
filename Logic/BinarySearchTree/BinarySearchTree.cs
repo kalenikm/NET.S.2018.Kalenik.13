@@ -8,31 +8,21 @@ namespace Logic.BinarySearchTree
         private readonly TreeNode<T> _root;
         private readonly IComparer<T> _comparer;
 
-        public BinarySearchTree(T item)
+        public BinarySearchTree(T item, IComparer<T> comparer = null)
         {
             if (ReferenceEquals(null, item))
             {
                 throw new ArgumentNullException($"{nameof(item)} is null.");
             }
 
-            if (!(item is IComparable<T>))
+            if (!(item is IComparable<T>) && ReferenceEquals(null, comparer))
             {
                 throw new InvalidCastException(
-                    $"{nameof(T)} should implement IComparable<T>. Or use ctor with IComparer<T>.");
-            }
-
-            _root = new TreeNode<T>(item, null);
-            _comparer = null;
-        }
-
-        public BinarySearchTree(T item, IComparer<T> comparer) : this(item)
-        {
-            if (ReferenceEquals(null, comparer))
-            {
-                throw new ArgumentNullException($"{nameof(comparer)} is null.");
+                    $"{nameof(T)} should implement IComparable<T>. Or use comparator.");
             }
 
             _comparer = comparer;
+            _root = new TreeNode<T>(item, null);
         }
 
         public void Add(T item)
@@ -58,6 +48,14 @@ namespace Logic.BinarySearchTree
                     }
                     current = current.Left;
                 }
+            }
+        }
+
+        public void Add(IEnumerable<T> enumerable)
+        {
+            foreach (var item in enumerable)
+            {
+                Add(item);
             }
         }
 
