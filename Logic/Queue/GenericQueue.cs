@@ -37,17 +37,7 @@ namespace Logic.Queue
 
         public IEnumerator<T> GetEnumerator()
         {
-            T[] newArray = new T[_count];
-            if (_tail > _head)
-            {
-                Array.Copy(_array, _head, newArray, 0, _count);
-            }
-            else
-            {
-                Array.Copy(_array, _head, newArray, 0, _count - _head);
-                Array.Copy(_array, 0, newArray, _count - _head, _tail);
-            }
-            return new CustomIterator<T>(newArray);
+            return new CustomIterator(this);
         }
 
         public void Enqueue(T item)
@@ -94,5 +84,59 @@ namespace Logic.Queue
             _head = 0;
             _tail = _count;
         }
+
+        #region Iterator
+
+        class CustomIterator : IEnumerator<T>, IEnumerator
+        {
+            private readonly GenericQueue<T> _container;
+            private int _index;
+            private readonly int _count;
+
+            public CustomIterator(GenericQueue<T> queue)
+            {
+                _container = queue;
+                _index = -1;
+                _count = queue.Count;
+            }
+
+            object IEnumerator.Current
+            {
+                get
+                {
+                    if (_index >= _count - 1)
+                        throw new ArgumentException();
+                    return _container._array[(_index + _container._head) % _container._array.Length];
+                }
+            }
+
+            public T Current
+            {
+                get
+                {
+                    if (_index >= _count - 1)
+                        throw new ArgumentException();
+                    return _container._array[(_index + _container._head) % _container._array.Length];
+                }
+            }
+
+            public bool MoveNext()
+            {
+                return ++_index < _count - 1;
+            }
+
+            public void Reset()
+            {
+                _index = -1;
+            }
+
+            public void Dispose()
+            {
+
+            }
+        }
+
+        #endregion
+
     }
 }

@@ -43,7 +43,6 @@
     <Compile Include="BinarySearchTree\BinarySearchTree.cs" />
     <Compile Include="BinarySearchTree\TreeNode.cs" />
     <Compile Include="Matrix\SquareMatrix.cs" />
-    <Compile Include="Queue\CustomIterator.cs" />
     <Compile Include="Queue\EmptyQueueException.cs" />
     <Compile Include="Queue\GenericQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
