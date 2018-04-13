@@ -1,4 +1,5 @@
 ﻿using System;
+using Logic.Queue;
 using NUnit.Framework;
 
 namespace Logic.Tests

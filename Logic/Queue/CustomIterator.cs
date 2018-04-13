@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Logic
+namespace Logic.Queue
 {
     public class CustomIterator<T> : IEnumerator<T>, IEnumerator
     {
