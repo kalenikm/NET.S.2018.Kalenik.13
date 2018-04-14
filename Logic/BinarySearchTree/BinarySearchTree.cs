@@ -8,6 +8,14 @@ namespace Logic.BinarySearchTree
         private readonly TreeNode<T> _root;
         private readonly IComparer<T> _comparer;
 
+        /// <summary>
+        /// Creates new instance.
+        /// </summary>
+        /// <param name="item">Root value.</param>
+        /// <param name="comparer">
+        /// Comparer to compare values of tree. 
+        /// Use if <typeparamref name="T"/> is not implemented IComparable.
+        /// </param>
         public BinarySearchTree(T item, IComparer<T> comparer = null)
         {
             if (ReferenceEquals(null, item))
@@ -25,6 +33,10 @@ namespace Logic.BinarySearchTree
             _root = new TreeNode<T>(item, null);
         }
 
+        /// <summary>
+        /// Adds <paramref name="item"/> in tree.
+        /// </summary>
+        /// <param name="item">Value to add in tree.</param>
         public void Add(T item)
         {
             TreeNode<T> current = _root;
@@ -51,6 +63,10 @@ namespace Logic.BinarySearchTree
             }
         }
 
+        /// <summary>
+        /// Adds enumerable of values.
+        /// </summary>
+        /// <param name="enumerable">Values to add in tree.</param>
         public void Add(IEnumerable<T> enumerable)
         {
             foreach (var item in enumerable)
@@ -68,6 +84,10 @@ namespace Logic.BinarySearchTree
             return ((IComparable<T>) x).CompareTo(y);
         }
 
+        /// <summary>
+        /// Makes pre-order traversal of this tree.
+        /// </summary>
+        /// <returns>Enumerable of values.</returns>
         public IEnumerable<T> Preorder()
         {
             Stack<TreeNode<T>> stack = new Stack<TreeNode<T>>();
@@ -85,6 +105,10 @@ namespace Logic.BinarySearchTree
             }
         }
 
+        /// <summary>
+        /// Makes in-order traversal of this tree.
+        /// </summary>
+        /// <returns>Enumerable of values.</returns>
         public IEnumerable<T> Inorder()
         {
             Stack<TreeNode<T>> stack = new Stack<TreeNode<T>>();
@@ -107,6 +131,10 @@ namespace Logic.BinarySearchTree
             }
         }
 
+        /// <summary>
+        /// Makes post-order traversal of this tree.
+        /// </summary>
+        /// <returns>Enumerable of values.</returns>
         public IEnumerable<T> Postorder()
         {
             Stack<TreeNode<T>> stack = new Stack<TreeNode<T>>();

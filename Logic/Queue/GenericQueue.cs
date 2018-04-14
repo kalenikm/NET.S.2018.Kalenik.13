@@ -13,10 +13,15 @@ namespace Logic.Queue
 
         public int Count => _count;
 
-        public GenericQueue() : this(8)
-        {
-        }
+        /// <summary>
+        /// Creates new instance with default size.
+        /// </summary>
+        public GenericQueue() : this(8) { }
 
+        /// <summary>
+        /// Creates new instance.
+        /// </summary>
+        /// <param name="capacity">Intial capacity of inner array.</param>
         public GenericQueue(int capacity)
         {
             if (capacity <= 0)
@@ -35,11 +40,19 @@ namespace Logic.Queue
             return GetEnumerator();
         }
 
+        /// <summary>
+        /// Returns custom enumerator.
+        /// </summary>
+        /// <returns>Custom enumerator.</returns>
         public IEnumerator<T> GetEnumerator()
         {
             return new CustomIterator(this);
         }
 
+        /// <summary>
+        /// Adds <paramref name="item"/> in tail of queue.
+        /// </summary>
+        /// <param name="item">Item to add.</param>
         public void Enqueue(T item)
         {
             if (_count >= _array.Length)
@@ -52,6 +65,10 @@ namespace Logic.Queue
             _count++;
         }
 
+        /// <summary>
+        /// Removes and returns item from head of queue if its exist.
+        /// </summary>
+        /// <returns>Item from head of queue.</returns>
         public T Dequeue()
         {
             if (_count == 0)
@@ -66,7 +83,7 @@ namespace Logic.Queue
             return item;
         }
 
-        public void SetCapacity(int size)
+        private void SetCapacity(int size)
         {
             if (_tail > _head)
             {
@@ -130,13 +147,9 @@ namespace Logic.Queue
                 _index = -1;
             }
 
-            public void Dispose()
-            {
-
-            }
+            public void Dispose() { }
         }
 
-        #endregion
-
+        #endregion Iterator
     }
 }

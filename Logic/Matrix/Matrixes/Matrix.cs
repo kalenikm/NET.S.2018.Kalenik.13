@@ -13,6 +13,11 @@ namespace Logic.Matrix.Matrixes
         public int Rows => _array.GetLength(0);
         public int Coloumns => _array.GetLength(1);
 
+        /// <summary>
+        /// Creates new empty matrix.
+        /// </summary>
+        /// <param name="size1">Number of rows.</param>
+        /// <param name="size2">Number of coloumns.</param>
         public Matrix(int size1, int size2)
         {
             if (size1 < 0 || size2 < 0)
@@ -23,6 +28,10 @@ namespace Logic.Matrix.Matrixes
             _array = new T[size1, size2];
         }
 
+        /// <summary>
+        /// Creates new matrix from <paramref name="array"/>.
+        /// </summary>
+        /// <param name="array">Values for new matrix.</param>
         public Matrix(T[,] array)
         {
             CheckArray(array);
@@ -30,6 +39,9 @@ namespace Logic.Matrix.Matrixes
             _array = array;
         }
 
+        /// <summary>
+        /// Invokes when matrix is changing.
+        /// </summary>
         public event OnChangeEvent<T> OnChange;
 
         public T this[int i, int j]

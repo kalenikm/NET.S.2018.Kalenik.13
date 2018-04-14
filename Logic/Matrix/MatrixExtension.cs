@@ -5,6 +5,13 @@ namespace Logic.Matrix
 {
     public static class MatrixExtension
     {
+        /// <summary>
+        /// Adds two matrixes with same sizes.
+        /// </summary>
+        /// <param name="matr1">First matrix.</param>
+        /// <param name="matr2">Second matrix.</param>
+        /// <param name="sumFunc">Func to sum elements of matrixes.</param>
+        /// <returns>Result matrix.</returns>
         public static dynamic Add<T>(this Matrix<T> matr1, Matrix<T> matr2, Func<T,T,T> sumFunc)
             where T : struct 
         {
@@ -59,9 +66,14 @@ namespace Logic.Matrix
         private static void Check<T>(Matrix<T> matr1, Matrix<T> matr2)
             where T : struct 
         {
-            if (ReferenceEquals(null, matr1) || ReferenceEquals(null, matr2))
+            if (ReferenceEquals(null, matr1))
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException($"{nameof(matr1)} is null.");
+            }
+
+            if (ReferenceEquals(null, matr2))
+            {
+                throw new ArgumentNullException($"{nameof(matr2)} is null.");
             }
 
             if (!matr1.Rows.Equals(matr2.Rows) || !matr1.Coloumns.Equals(matr2.Coloumns))

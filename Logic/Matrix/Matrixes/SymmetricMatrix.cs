@@ -5,7 +5,16 @@ namespace Logic.Matrix.Matrixes
     public class SymmetricMatrix<T> : SquareMatrix<T>
         where T : struct 
     {
+        /// <summary>
+        /// Creates new symmetic matrix.
+        /// </summary>
+        /// <param name="size">Number of rows and coloumns.</param>
         public SymmetricMatrix(int size) : base(size) { }
+
+        /// <summary>
+        /// Creates new symmetric matrix from <paramref name="array"/>.
+        /// </summary>
+        /// <param name="array">Basic array. Should be symmetric.</param>
         public SymmetricMatrix(T[,] array) : base(array) { }
 
         protected override void CheckArray(T[,] array)
