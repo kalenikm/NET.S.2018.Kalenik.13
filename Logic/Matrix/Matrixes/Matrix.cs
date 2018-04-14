@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Logic.Matrix
+namespace Logic.Matrix.Matrixes
 {
     public delegate void OnChangeEvent<T>(object sender, OnChangeEventArgs args)
         where T : struct;

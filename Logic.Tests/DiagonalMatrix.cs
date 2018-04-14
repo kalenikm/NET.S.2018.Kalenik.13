@@ -1,5 +1,6 @@
 ﻿using System;
 using Logic.Matrix;
+using Logic.Matrix.Matrixes;
 using NUnit.Framework;
 
 namespace Logic.Tests

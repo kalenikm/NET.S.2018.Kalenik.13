@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Logic.Matrix
+namespace Logic.Matrix.Matrixes
 {
     public class DiagonalMatrix<T> : SquareMatrix<T>
         where T : struct 

@@ -3,6 +3,7 @@ using Logic;
 using Logic.BinarySearchTree;
 using Logic.Comparers;
 using Logic.Matrix;
+using Logic.Matrix.Matrixes;
 
 namespace ConsoleUI
 {
@@ -65,6 +66,23 @@ namespace ConsoleUI
                 Console.Write("X:{0}; Y:{1}.   ", item.X, item.Y);
             }
             Console.WriteLine();
+
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            SymmetricMatrix<int> symmatr1 = new SymmetricMatrix<int>(new int[,] {{0, 1, 2}, {1, 0, 3}, {2, 3, 0}});
+            SymmetricMatrix<int> symmatr2 = new SymmetricMatrix<int>(new int[,] {{0, 1, 2}, {1, 0, 3}, {2, 3, 0}});
+            Console.WriteLine(symmatr1.Add(symmatr2, (a,b) => a + b));
+
+            SquareMatrix<int> sqmatr = new SquareMatrix<int>(new int[,] {{2, 1, 7}, {1, 0, 3}, {2, 3, 8}});
+            Console.WriteLine(sqmatr.Add(symmatr2, (a, b) => a + b));
+
+            DiagonalMatrix<int> dmatr = new DiagonalMatrix<int>(new int[,] {{0, 1, 7}, {1, 0, 3}, {2, 3, 0}});
+            Console.WriteLine(dmatr.Add(symmatr2, (a, b) => a + b));
         }
     }
 }
