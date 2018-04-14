@@ -39,7 +39,7 @@ namespace Logic.Tests
         public void BinarySearchTree_Int32_PostorderMethod()
         {
             BinarySearchTree<int> tree = new BinarySearchTree<int>(5);
-            tree.Add(new[] { 8, 10, 3, 2, 7, 6 });
+            tree.Add(new[] {8, 10, 3, 2, 7, 6});
             int[] res = {2, 3, 6, 7, 10, 8, 5};
             int index = 0;
             foreach (var num in tree.Postorder())
@@ -47,5 +47,6 @@ namespace Logic.Tests
                 Assert.AreEqual(res[index], num);
                 index++;
             }
+        }
     }
 }

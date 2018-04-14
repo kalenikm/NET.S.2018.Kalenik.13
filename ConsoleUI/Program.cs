@@ -2,6 +2,7 @@
 using Logic;
 using Logic.BinarySearchTree;
 using Logic.Comparers;
+using Logic.Matrix;
 
 namespace ConsoleUI
 {
